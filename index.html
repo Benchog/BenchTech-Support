@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenchTech Support - Fast. Reliable. Remote Tech Support.</title>
+    <meta name="description" content="BenchTech Support offers affordable, fast, and friendly remote tech support services in Ghana. Windows installation, Office setup, antivirus installation, and more.">
+    <meta name="keywords" content="remote tech support, Windows installation, Office setup, antivirus, Ghana, BenchTech Support">
+    <meta name="author" content="BenchTech Support">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="BenchTech Support - Remote Tech Support Services">
+    <meta property="og:description" content="Fast, reliable, and affordable remote tech support services in Ghana">
+    <meta property="og:type" content="website">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc2626;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #dc2626;
+        }
+        
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+        
+        .page {
+            display: none;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #dc2626 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #dc2626;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Services Preview */
+        .services-preview {
+            padding: 4rem 2rem;
+            background: #f8fafc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2563eb;
+            font-weight: 700;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Pricing Table */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #dc2626;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card .currency {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-card ul li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Forms */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: #dc2626;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #b91c1c;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item h3 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #20b358;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #2563eb;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #374151;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #2563eb;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-table {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+        
+        /* Page-specific styles */
+        .page-content {
+            padding: 4rem 2rem;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content h2 {
+            color: #2563eb;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .value-item i {
+            font-size: 2.5rem;
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .value-item h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                <span>BenchTech Support</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('book')">Book Service</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>BenchTech Support</h1>
+                    <p class="tagline">Fast. Reliable. Remote Tech Support.</p>
+                    <p>Professional remote technical support services for all your computer needs. Based in Ghana, serving clients with affordable, efficient, and friendly tech solutions.</p>
+                    <a href="#" onclick="showPage('book')" class="cta-button">Book a Service</a>
+                </div>
+            </section>
+
+            <section class="services-preview">
+                <div class="container">
+                    <h2 class="section-title">Our Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="fab fa-windows"></i>
+                            <h3>Windows Installation</h3>
+                            <p>Fresh Windows installation and setup with drivers and essential software.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-file-word"></i>
+                            <h3>Office Setup</h3>
+                            <p>Microsoft Office installation, activation, and configuration for productivity.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Antivirus Protection</h3>
+                            <p>Antivirus installation, system scanning, and malware removal services.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Software Setup</h3>
+                            <p>Installation and configuration of various software applications you need.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-desktop"></i>
+                            <h3>Full System Setup</h3>
+                            <p>Complete system configuration from OS installation to software setup.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-ambulance"></i>
+                            <h3>Emergency Support</h3>
+                            <p>Urgent technical support for critical system issues and problems.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <section class="page-content">
+                <div class="container">
+                    <h2 class="section-title">Our Services & Pricing</h2>
+                    <div class="pricing-table">
+                        <div class="pricing-card">
+                            <i class="fab fa-windows" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                            <h3>Windows Installation</h3>
+                            <div class="price">₵50 <span class="currency">GHS</span></div>
+                            <ul>
+                                <li>Fresh Windows installation</li>
+                                <li>Driver installation</li>
+                                <li>Basic software setup</li>
+                                <li>System optimization</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card featured">
+                            <i class="fas fa-file-word" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                            <h3>Office Installation</h3>
+                            <div class="price">₵40 <span class="currency">GHS</span></div>
+                            <ul>
+                                <li>Microsoft Office suite</li>
+                                <li>Activation & licensing</li>
+                                <li>Configuration setup</li>
+                                <li>Basic training</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card">
+                            <i class="fas fa-shield-alt" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                            <h3>Antivirus Setup</h3>
+                            <div class="price">₵30 <span class="currency">GHS</span></div>
+                            <ul>
+                                <li>Antivirus installation</li>
+                                <li>System scan</li>
+                                <li>Malware removal</li>
+                                <li>Security configuration</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card">
+                            <i class="fas fa-cogs" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                            <h3>Software Setup</h3>
+                            <div class="price">₵25 <span class="currency">GHS</span></div>
+                            <ul>
+                                <li>Software installation</li>
+                                <li>Configuration</li>
+                                <li>User training</li>
+                                <li>Performance optimization</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card">
+                            <i class="fas fa-desktop" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                            <h3>Full System Setup</h3>
+                            <div class="price">₵100 <span class="currency">GHS</span></div>
+                            <ul>
+                                <li>Complete OS installation</li>
+                                <li>All drivers & software</li>
+                                <li>System optimization</li>
+                                <li>Full configuration</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card">
+                            <i class="fas fa-ambulance" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                            <h3>Emergency Support</h3>
+                            <div class="price">₵60 <span class="currency">GHS</span></div>
+                            <ul>
+                                <li>Urgent problem solving</li>
+                                <li>System recovery</li>
+                                <li>Data backup</li>
+                                <li>Priority support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <section class="page-content" style="background: #f8fafc;">
+                <div class="container">
+                    <div class="about-content">
+                        <h2>About BenchTech Support</h2>
+                        <p>Welcome to BenchTech Support, your trusted partner for remote technical support services in Ghana. Founded by Benchog Patrick, we specialize in providing fast, reliable, and affordable tech solutions to individuals and businesses across the country.</p>
+                        
+                        <h2>Our Story</h2>
+                        <p>BenchTech Support was born from a passion for technology and a desire to make professional tech support accessible to everyone. With years of experience in the IT industry, we understand the frustrations that come with computer problems and software issues.</p>
+                        
+                        <h2>Our Mission</h2>
+                        <p>To provide exceptional remote technical support services that are fast, reliable, and affordable. We aim to solve your tech problems quickly so you can get back to what matters most to you.</p>
+                        
+                        <div class="values-grid">
+                            <div class="value-item">
+                                <i class="fas fa-bolt"></i>
+                                <h3>Fast Service</h3>
+                                <p>Quick response times and efficient problem resolution to minimize downtime.</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-handshake"></i>
+                                <h3>Reliable Support</h3>
+                                <p>Consistent, professional service you can count on for all your tech needs.</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-heart"></i>
+                                <h3>Friendly Approach</h3>
+                                <p>Patient, understanding support with clear communication throughout the process.</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <h3>Affordable Pricing</h3>
+                                <p>Competitive rates that provide excellent value for professional tech support.</p>
+                            </div>
+                        </div>
+                        
+                        <h2 style="margin-top: 3rem;">Why Choose BenchTech Support?</h2>
+                        <p>We use industry-standard remote tools like AnyDesk and TeamViewer to provide secure, efficient support. Our team is experienced, certified, and committed to your satisfaction. We serve clients across Ghana with the same level of professional service.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <section class="page-content">
+                <div class="container">
+                    <h2 class="section-title">Get In Touch</h2>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <h3>Phone</h3>
+                            <p>0240025563</p>
+                            <p>Available Monday - Saturday<br>8:00 AM - 8:00 PM</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>pat.benchog@gmail.com</p>
+                            <p>We respond within 2 hours<br>during business hours</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Location</h3>
+                            <p>Ghana</p>
+                            <p>Remote Services Only<br>Serving all regions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required placeholder="Tell us about your technical issue or question..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                        
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <p>Need immediate assistance?</p>
+                            <a href="https://wa.me/233240025563" class="whatsapp-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Ask Questions on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BenchTech Support</h3>
+                <p>Your trusted partner for remote technical support services in Ghana. Fast, reliable, and affordable solutions for all your tech needs.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#" onclick="showPage('home')">Home</a>
+                <a href="#" onclick="showPage('services')">Services</a>
+                <a href="#" onclick="showPage('about')">About</a>
+                <a href="#" onclick="showPage('contact')">Contact</a>
+                <a href="#" onclick="showPage('book')">Book Service</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 0240025563</p>
+                <p><i class="fas fa-envelope"></i> pat.benchog@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Ghana (Remote Services)</p>
+                <a href="https://wa.me/233240025563" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 BenchTech Support. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation active state
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Close mobile menu if open
+            const navLinksContainer = document.querySelector('.nav-links');
+            navLinksContainer.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Form submission handlers
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hello BenchTech Support!%0A%0AName: ${name}%0AEmail: ${email}%0A%0AMessage: ${message}`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/233240025563?text=${whatsappMessage}`, '_blank');
+            
+            // Show success message
+            alert('Thank you for your message! You will be redirected to WhatsApp to complete your inquiry.');
+            
+            // Reset form
+            event.target.reset();
+        }
+        
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const service = formData.get('service');
+            const clientName = formData.get('clientName');
+            const clientPhone = formData.get('clientPhone');
+            const contactMethod = formData.get('contactMethod');
+            const preferredDate = formData.get('preferredDate');
+            const preferredTime = formData.get('preferredTime');
+            const details = formData.get('details');
+            
+            // Get service name and price
+            const serviceOption = document.querySelector(`option[value="${service}"]`);
+            const serviceName = serviceOption ? serviceOption.textContent : service;
+            
+            // Create WhatsApp booking message
+            const whatsappMessage = `🔧 *Service Booking Request*%0A%0A*Service:* ${serviceName}%0A*Name:* ${clientName}%0A*Phone:* ${clientPhone}%0A*Preferred Contact:* ${contactMethod}%0A*Preferred Date:* ${preferredDate}%0A*Preferred Time:* ${preferredTime}%0A%0A*Additional Details:*%0A${details}%0A%0APlease confirm my booking. Thank you!`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/233240025563?text=${whatsappMessage}`, '_blank');
+            
+            // Show success message
+            alert('Thank you for your booking request! You will be redirected to WhatsApp to confirm your appointment.');
+            
+            // Reset form
+            event.target.reset();
+        }
+        
+        // Set minimum date to today for booking form
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('preferredDate');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add loading animation to forms
+        function showLoading(button) {
+            const originalText = button.textContent;
+            button.textContent = 'Processing...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2000);
+        }
+        
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card, .pricing-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>fab fa-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Book Service Page -->
+        <div id="book" class="page">
+            <section class="page-content" style="background: #f8fafc;">
+                <div class="container">
+                    <h2 class="section-title">Book a Service</h2>
+                    
+                    <div class="form-container">
+                        <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                            <div class="form-group">
+                                <label for="service">Select Service</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Choose a service...</option>
+                                    <option value="windows">Windows Installation - ₵50</option>
+                                    <option value="office">Office Installation - ₵40</option>
+                                    <option value="antivirus">Antivirus Setup - ₵30</option>
+                                    <option value="software">Software Setup - ₵25</option>
+                                    <option value="full-setup">Full System Setup - ₵100</option>
+                                    <option value="emergency">Emergency Support - ₵60</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="clientName">Your Name</label>
+                                <input type="text" id="clientName" name="clientName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="clientPhone">Phone Number</label>
+                                <input type="tel" id="clientPhone" name="clientPhone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMethod">Preferred Contact Method</label>
+                                <select id="contactMethod" name="contactMethod" required>
+                                    <option value="">Select method...</option>
+                                    <option value="phone">Phone Call</option>
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="email">Email</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferredDate">Preferred Date</label>
+                                <input type="date" id="preferredDate" name="preferredDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferredTime">Preferred Time</label>
+                                <select id="preferredTime" name="preferredTime" required>
+                                    <option value="">Select time...</option>
+                                    <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
+                                    <option value="afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                                    <option value="evening">Evening (4:00 PM - 8:00 PM)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="details">Additional Details</label>
+                                <textarea id="details" name="details" placeholder="Please describe your issue or specific requirements..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Book Service</button>
+                        </form>
+                        
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <p>Questions about our services?</p>
+                            <a href="https://wa.me/233240025563" class="whatsapp-btn" target="_blank">
+                                <i class="
