@@ -28,6 +28,73 @@
             line-height: 1.6;
             color: #333;
             background: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode header {
+            background: #1e293b;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .nav-links a {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .nav-links a:hover,
+        body.dark-mode .nav-links a.active {
+            color: #dc2626;
+        }
+        
+        body.dark-mode .service-card,
+        body.dark-mode .pricing-card,
+        body.dark-mode .contact-item,
+        body.dark-mode .value-item {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .services-preview {
+            background: #0f172a;
+        }
+        
+        body.dark-mode .page-content {
+            background: #0f172a;
+        }
+        
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group select,
+        body.dark-mode .form-group textarea {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-color: #475569;
+        }
+        
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group select:focus,
+        body.dark-mode .form-group textarea:focus {
+            border-color: #2563eb;
+        }
+        
+        body.dark-mode .form-group label {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .about-content p {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .mobile-menu span {
+            background: #e2e8f0;
+        }
+        
+        body.dark-mode .nav-links {
+            background: #1e293b;
         }
         
         /* Header & Navigation */
@@ -38,6 +105,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
         
         nav {
@@ -79,6 +147,34 @@
         .nav-links a:hover,
         .nav-links a.active {
             color: #dc2626;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: 2px solid #dc2626;
+            color: #dc2626;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            margin-left: 1rem;
+        }
+        
+        .dark-mode-toggle:hover {
+            background: #dc2626;
+            color: white;
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            border-color: #fbbf24;
+            color: #fbbf24;
+        }
+        
+        body.dark-mode .dark-mode-toggle:hover {
+            background: #fbbf24;
+            color: #0f172a;
         }
         
         .mobile-menu {
@@ -431,6 +527,11 @@
                 flex-direction: column;
                 padding: 1rem;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                transition: background-color 0.3s;
+            }
+            
+            body.dark-mode .nav-links {
+                background: #1e293b;
             }
             
             .nav-links.active {
@@ -439,6 +540,12 @@
             
             .mobile-menu {
                 display: flex;
+            }
+            
+            .dark-mode-toggle {
+                margin-left: 0.5rem;
+                font-size: 1rem;
+                padding: 0.4rem;
             }
             
             .hero h1 {
@@ -524,13 +631,18 @@
                 <i class="fas fa-tools"></i>
                 <span>BenchTech Support</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
-                <li><a href="#" onclick="showPage('services')">Services</a></li>
-                <li><a href="#" onclick="showPage('about')">About</a></li>
-                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
-                <li><a href="#" onclick="showPage('book')">Book Service</a></li>
-            </ul>
+            <div style="display: flex; align-items: center;">
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                    <li><a href="#" onclick="showPage('services')">Services</a></li>
+                    <li><a href="#" onclick="showPage('about')">About</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    <li><a href="#" onclick="showPage('book')">Book Service</a></li>
+                </ul>
+                <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
             <div class="mobile-menu" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
@@ -812,6 +924,38 @@
     </footer>
 
     <script>
+        // Dark mode functionality
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggle = document.querySelector('.dark-mode-toggle i');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                toggle.className = 'fas fa-sun';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                toggle.className = 'fas fa-moon';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+        
+        // Initialize dark mode based on user preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('preferredDate');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+            
+            // Check for saved dark mode preference
+            const darkMode = localStorage.getItem('darkMode');
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.dark-mode-toggle i').className = 'fas fa-sun';
+            }
+        });
+        
         // Navigation functionality
         function showPage(pageId) {
             // Hide all pages
@@ -892,13 +1036,7 @@
         }
         
         // Set minimum date to today for booking form
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            const dateInput = document.getElementById('preferredDate');
-            if (dateInput) {
-                dateInput.min = today;
-            }
-        });
+        // (This code is now moved to the DOMContentLoaded event above)
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
@@ -1022,4 +1160,13 @@
                         <div style="text-align: center; margin-top: 2rem;">
                             <p>Questions about our services?</p>
                             <a href="https://wa.me/233240025563" class="whatsapp-btn" target="_blank">
-                                <i class="
+                                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                            </a>
+                        </div> <!-- end of center text block -->
+                    </div> <!-- end of form-container -->
+                </div> <!-- end of container -->
+            </section>
+        </div> <!-- end of #book page -->
+</html>
+
+                            
